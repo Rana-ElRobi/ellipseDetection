@@ -43,5 +43,5 @@ def main():
 	# load the images
 	platesStack , grayPlates = loadPlates()
 	# Try Hough transform Elipses on plat no 29
-	
+
 main()
