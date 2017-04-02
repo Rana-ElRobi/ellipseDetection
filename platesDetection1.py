@@ -36,12 +36,29 @@ def loadPlates():
 		cv2.waitKey(0)	
 	return imgstack , grayStack
 
-def detectplates():
+# function that applies haough transform ellips on image no 29
+# helper link
+# http://stackoverflow.com/questions/42206042/ellipse-detection-in-opencv-python	
+def detectplates(colorimg , greyimg):
+	#--- First obtain the threshold using the greyscale image ---
+	ret,th = cv2.threshold(greyimg,127,255, 0)
+	#--- Find all the contours in the binary image ---
+	_, contours,hierarchy = cv2.findContours(th,2,1)
+	cnt = contours
+	big_contour = []
+	max = 0
+	for i in cnt:
+		area = cv2.contourArea(i) #--- find the contour having biggest area ---
+	   	if(area > max):
+	   		max = area
+	   		big_contour = i 
+	final = cv2.drawContours(colorimg, big_contour, -1, (0,255,0), 3)
+	cv2.imshow('final', final)
 	return 0
 
 def main():
 	# load the images
 	platesStack , grayPlates = loadPlates()
 	# Try Hough transform Elipses on plat no 29
-
+	detectplates(platesStack[29],grayPlates[29])
 main()
