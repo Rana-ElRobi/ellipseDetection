@@ -40,7 +40,7 @@ def loadPlates():
 		#cv2.imshow("Plates found" ,imgstack[-1])
 		#cv2.waitKey(0)	
 	return imgstack , grayStack
-# Function that applied find countours to find ellips
+# Function that applied find countours to find ellipse (TOOOOO SLOW)
 # helper link
 # http://stackoverflow.com/questions/42206042/ellipse-detection-in-opencv-python	
 def detectContoursplates(colorimg , greyimg):
@@ -64,7 +64,9 @@ def detectContoursplates(colorimg , greyimg):
 # http://scikit-image.org/docs/dev/auto_examples/edges/plot_circular_elliptical_hough_transform.html
 def houghTrans(colorimg , greyimg):
 	# Load picture, convert to grayscale and detect edges
-	image_rgb = data.coffee()[0:220, 160:420]
+	#image_rgb = data.coffee()[0:220, 0:420]
+	#cv2.imwrite("coffee.png",image_rgb)
+	image_rgb = cv2.imread("coffee.png")
 	#image_rgb = colorimg
 	print( "Reading image DONE")
 	image_gray = color.rgb2gray(image_rgb)
