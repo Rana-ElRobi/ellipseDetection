@@ -90,9 +90,15 @@ def houghTrans(colorimg , greyimg):
 	best = list(result[-1])
 	yc, xc, a, b = [int(round(x)) for x in best[1:5]]
 	orientation = best[5]
+	print ("orientation" , orientation)
 	print("Estimate Params DONE")
 	# Draw the ellipse on the original image
 	cy, cx = ellipse_perimeter(yc, xc, a, b, orientation)
+	print("cy: ", cy)
+	print("cx: ", cx)
+	print("a: ", a)
+	print("b: ", b)
+
 	image_rgb[cy, cx] = (0, 0, 255)
 	# Draw the edge (white) and the resulting ellipse (red)
 	edges = color.gray2rgb(img_as_ubyte(edges))
