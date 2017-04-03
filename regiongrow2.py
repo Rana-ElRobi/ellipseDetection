@@ -75,7 +75,8 @@ def region_growing(img, seed):
 if __name__ == '__main__':
 
     boxes = []
-    filename = 'image.jpg'
+    #filename = 'image.jpg'
+    filename = 'coffee.png'
     img = cv2.imread(filename, 0)
     resized = cv2.resize(img,(256,256))
     cv2.namedWindow('input')
@@ -84,7 +85,8 @@ if __name__ == '__main__':
     cv2.waitKey()
     print "Starting region growing based on last click"
     seed = boxes[-1]
-    cv2.imshow('input', region_growing(resized, seed))
+    #s = 118,89
+    cv2.imshow('result', region_growing(resized, seed))
     print "Done. Showing output now"
 
     cv2.waitKey()
